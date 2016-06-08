@@ -36,6 +36,17 @@ namespace YourReservation.Controllers
             return Ok(restaurantTask);
         }
 
+        [HttpGet]
+        [Route("api/RestaurantTasks/getByRestaurantID/{ID}")]
+        public IOrderedQueryable getByRestaurantID(int ID)
+        {
+            var query = from t in db.RestaurantTasks
+                        where t.RestaurantID == ID
+                        select t;
+
+            return (IOrderedQueryable)query;
+        }
+
         // PUT: api/RestaurantTasks/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRestaurantTask(int id, RestaurantTask restaurantTask)
