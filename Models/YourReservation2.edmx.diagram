@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84421d578fd44913ba6829b14b9758ce" Name="Diagram1">
+        <EntityTypeShape EntityType="YourReservationModel1.Reservation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.Restaurant" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantAbout" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantContact" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantLocation" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantOwner" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantReview" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.User" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantTableConfig" Width="1.5" PointX="3.75" PointY="7.75" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantTimeConfig" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="YourReservationModel1.RestaurantTableType" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

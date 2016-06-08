@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YourReservationModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="RestaurantTableConfigID" Type="int" />
+          <Property Name="ReservationDate" Type="date" />
+          <Property Name="ReservationTime" Type="time" Precision="7" />
+          <Property Name="PartyNumber" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecialRequest" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="RestaurantID" />
+          </Key>
+          <Property Name="RestaurantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SlotsPerHour" Type="int" Nullable="false" />
+          <Property Name="DateRegistered" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RestaurantAbout">
+          <Key>
+            <PropertyRef Name="RestaurantAboutID" />
+          </Key>
+          <Property Name="RestaurantAboutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="About" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="RestaurantContact">
+          <Key>
+            <PropertyRef Name="RestaurantContactID" />
+          </Key>
+          <Property Name="RestaurantContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="RestaurantOwnerID" Type="int" Nullable="false" />
+          <Property Name="RestaurantLocationID" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantHolidays">
+          <Key>
+            <PropertyRef Name="RestaurantHolidayID" />
+          </Key>
+          <Property Name="RestaurantHolidayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="Holiday" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantLocation">
+          <Key>
+            <PropertyRef Name="RestaurantLocationID" />
+          </Key>
+          <Property Name="RestaurantLocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State/Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SuiteNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantManagementRoles">
+          <Key>
+            <PropertyRef Name="RestaurantManagementRoleID" />
+          </Key>
+          <Property Name="RestaurantManagementRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantOwners">
+          <Key>
+            <PropertyRef Name="RestaurantOwnerID" />
+          </Key>
+          <Property Name="RestaurantOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="RestaurantManagementRoleID" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State/Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApartmentNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantReservationStatus">
+          <Key>
+            <PropertyRef Name="ReservationStatusID" />
+          </Key>
+          <Property Name="ReservationStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="RestaurantReviews">
+          <Key>
+            <PropertyRef Name="RestaurantReviewID" />
+          </Key>
+          <Property Name="RestaurantReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="ReviewName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReviewContent" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="ReviewDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RestaurantTableBooking">
+          <Key>
+            <PropertyRef Name="TableBookingID" />
+          </Key>
+          <Property Name="TableBookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="TableConfigID" Type="int" />
+          <Property Name="ReservationID" Type="int" />
+          <Property Name="ReservationStatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="RestaurantTableConfig">
+          <Key>
+            <PropertyRef Name="TableConfigID" />
+          </Key>
+          <Property Name="TableConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="TableNumber" Type="int" />
+          <Property Name="NumberOfSeats" Type="int" />
+          <Property Name="TableTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="RestaurantTableType">
+          <Key>
+            <PropertyRef Name="TableTypeID" />
+          </Key>
+          <Property Name="TableTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestaurantTasks">
+          <Key>
+            <PropertyRef Name="RestaurantTaskID" />
+          </Key>
+          <Property Name="RestaurantTaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="TaskDate" Type="date" />
+          <Property Name="TaskSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaskDescription" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="RestaurantTimeConfig">
+          <Key>
+            <PropertyRef Name="TimeConfigurationID" />
+          </Key>
+          <Property Name="TimeConfigurationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpeningTime" Type="time" Precision="7" />
+          <Property Name="ClosingTime" Type="time" Precision="7" />
+          <Property Name="ClosedHolidays" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State/Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApartmentNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="YourReservationModel2StoreContainer">
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantAbout" EntityType="Self.RestaurantAbout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantContact" EntityType="Self.RestaurantContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantHolidays" EntityType="Self.RestaurantHolidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantLocation" EntityType="Self.RestaurantLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantManagementRoles" EntityType="Self.RestaurantManagementRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantOwners" EntityType="Self.RestaurantOwners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantReservationStatus" EntityType="Self.RestaurantReservationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantReviews" EntityType="Self.RestaurantReviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTableBooking" EntityType="Self.RestaurantTableBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTableConfig" EntityType="Self.RestaurantTableConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTableType" EntityType="Self.RestaurantTableType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTasks" EntityType="Self.RestaurantTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTimeConfig" EntityType="Self.RestaurantTimeConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YourReservationModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="RestaurantID" />
+          </Key>
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SlotsPerHour" Type="Int32" Nullable="false" />
+          <Property Name="DateRegistered" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RestaurantAbout">
+          <Key>
+            <PropertyRef Name="RestaurantAboutID" />
+          </Key>
+          <Property Name="RestaurantAboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="About" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantContact">
+          <Key>
+            <PropertyRef Name="RestaurantContactID" />
+          </Key>
+          <Property Name="RestaurantContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantOwnerID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantLocationID" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantLocation">
+          <Key>
+            <PropertyRef Name="RestaurantLocationID" />
+          </Key>
+          <Property Name="RestaurantLocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SuiteNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantOwner">
+          <Key>
+            <PropertyRef Name="RestaurantOwnerID" />
+          </Key>
+          <Property Name="RestaurantOwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApartmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantManagementRoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantReview">
+          <Key>
+            <PropertyRef Name="RestaurantReviewID" />
+          </Key>
+          <Property Name="RestaurantReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="ReviewDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RestaurantTableConfig">
+          <Key>
+            <PropertyRef Name="TableConfigID" />
+          </Key>
+          <Property Name="TableConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="TableNumber" Type="Int32" />
+          <Property Name="NumberOfSeats" Type="Int32" />
+          <Property Name="TableTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RestaurantTableType">
+          <Key>
+            <PropertyRef Name="TableTypeID" />
+          </Key>
+          <Property Name="TableTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantTimeConfig">
+          <Key>
+            <PropertyRef Name="TimeConfigurationID" />
+          </Key>
+          <Property Name="TimeConfigurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OpeningTime" Type="Time" Precision="7" />
+          <Property Name="ClosingTime" Type="Time" Precision="7" />
+          <Property Name="ClosedHolidays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApartmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="YourReservationEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+          <EntitySet Name="RestaurantAbouts" EntityType="Self.RestaurantAbout" />
+          <EntitySet Name="RestaurantContacts" EntityType="Self.RestaurantContact" />
+          <EntitySet Name="RestaurantLocations" EntityType="Self.RestaurantLocation" />
+          <EntitySet Name="RestaurantOwners" EntityType="Self.RestaurantOwner" />
+          <EntitySet Name="RestaurantReviews" EntityType="Self.RestaurantReview" />
+          <EntitySet Name="RestaurantTableConfigs" EntityType="Self.RestaurantTableConfig" />
+          <EntitySet Name="RestaurantTableTypes" EntityType="Self.RestaurantTableType" />
+          <EntitySet Name="RestaurantTimeConfigs" EntityType="Self.RestaurantTimeConfig" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="RestaurantHolidays" EntityType="YourReservationModel2.RestaurantHoliday" />
+          <EntitySet Name="RestaurantReservationStatus" EntityType="YourReservationModel2.RestaurantReservationStatu" />
+          <EntitySet Name="RestaurantTableBookings" EntityType="YourReservationModel2.RestaurantTableBooking" />
+          <EntitySet Name="Reservations" EntityType="YourReservationModel2.Reservation" />
+          <EntitySet Name="RestaurantManagementRoles" EntityType="YourReservationModel2.RestaurantManagementRole" />
+          <EntitySet Name="RestaurantTasks" EntityType="YourReservationModel2.RestaurantTask" />
+        </EntityContainer>
+        <EntityType Name="RestaurantHoliday">
+          <Key>
+            <PropertyRef Name="RestaurantHolidayID" />
+          </Key>
+          <Property Name="RestaurantHolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="Holiday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantReservationStatu">
+          <Key>
+            <PropertyRef Name="ReservationStatusID" />
+          </Key>
+          <Property Name="ReservationStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RestaurantTableBooking">
+          <Key>
+            <PropertyRef Name="TableBookingID" />
+          </Key>
+          <Property Name="TableBookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="TableConfigID" Type="Int32" />
+          <Property Name="ReservationID" Type="Int32" />
+          <Property Name="ReservationStatusID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="RestaurantTableConfigID" Type="Int32" />
+          <Property Name="ReservationDate" Type="DateTime" Precision="0" />
+          <Property Name="ReservationTime" Type="Time" Precision="7" />
+          <Property Name="PartyNumber" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialRequest" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantManagementRole">
+          <Key>
+            <PropertyRef Name="RestaurantManagementRoleID" />
+          </Key>
+          <Property Name="RestaurantManagementRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RestaurantTask">
+          <Key>
+            <PropertyRef Name="RestaurantTaskID" />
+          </Key>
+          <Property Name="RestaurantTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <Property Name="TaskDate" Type="DateTime" Precision="0" />
+          <Property Name="TaskSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaskDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YourReservationModel2StoreContainer" CdmEntityContainer="YourReservationEntities3">
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="YourReservationModel2.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+                <ScalarProperty Name="SlotsPerHour" ColumnName="SlotsPerHour" />
+                <ScalarProperty Name="DateRegistered" ColumnName="DateRegistered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantAbouts">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantAbout">
+              <MappingFragment StoreEntitySet="RestaurantAbout">
+                <ScalarProperty Name="RestaurantAboutID" ColumnName="RestaurantAboutID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="About" ColumnName="About" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantContacts">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantContact">
+              <MappingFragment StoreEntitySet="RestaurantContact">
+                <ScalarProperty Name="RestaurantContactID" ColumnName="RestaurantContactID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="RestaurantOwnerID" ColumnName="RestaurantOwnerID" />
+                <ScalarProperty Name="RestaurantLocationID" ColumnName="RestaurantLocationID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantLocations">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantLocation">
+              <MappingFragment StoreEntitySet="RestaurantLocation">
+                <ScalarProperty Name="RestaurantLocationID" ColumnName="RestaurantLocationID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="SuiteNumber" ColumnName="SuiteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantOwners">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantOwner">
+              <MappingFragment StoreEntitySet="RestaurantOwners">
+                <ScalarProperty Name="RestaurantManagementRoleID" ColumnName="RestaurantManagementRoleID" />
+                <ScalarProperty Name="RestaurantOwnerID" ColumnName="RestaurantOwnerID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantReviews">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantReview">
+              <MappingFragment StoreEntitySet="RestaurantReviews">
+                <ScalarProperty Name="RestaurantReviewID" ColumnName="RestaurantReviewID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ReviewName" ColumnName="ReviewName" />
+                <ScalarProperty Name="ReviewContent" ColumnName="ReviewContent" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ReviewDateTime" ColumnName="ReviewDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTableConfigs">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableConfig">
+              <MappingFragment StoreEntitySet="RestaurantTableConfig">
+                <ScalarProperty Name="TableConfigID" ColumnName="TableConfigID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+                <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+                <ScalarProperty Name="TableTypeID" ColumnName="TableTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTableTypes">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableType">
+              <MappingFragment StoreEntitySet="RestaurantTableType">
+                <ScalarProperty Name="TableTypeID" ColumnName="TableTypeID" />
+                <ScalarProperty Name="TableType" ColumnName="TableType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTimeConfigs">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTimeConfig">
+              <MappingFragment StoreEntitySet="RestaurantTimeConfig">
+                <ScalarProperty Name="ClosedHolidays" ColumnName="ClosedHolidays" />
+                <ScalarProperty Name="TimeConfigurationID" ColumnName="TimeConfigurationID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+                <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="YourReservationModel2.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantHolidays">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantHoliday">
+              <MappingFragment StoreEntitySet="RestaurantHolidays">
+                <ScalarProperty Name="Holiday" ColumnName="Holiday" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="RestaurantHolidayID" ColumnName="RestaurantHolidayID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantReservationStatus">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantReservationStatu">
+              <MappingFragment StoreEntitySet="RestaurantReservationStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReservationStatusID" ColumnName="ReservationStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTableBookings">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableBooking">
+              <MappingFragment StoreEntitySet="RestaurantTableBooking">
+                <ScalarProperty Name="ReservationStatusID" ColumnName="ReservationStatusID" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="TableConfigID" ColumnName="TableConfigID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="TableBookingID" ColumnName="TableBookingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="YourReservationModel2.Reservation">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="SpecialRequest" ColumnName="SpecialRequest" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PartyNumber" ColumnName="PartyNumber" />
+                <ScalarProperty Name="ReservationTime" ColumnName="ReservationTime" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="RestaurantTableConfigID" ColumnName="RestaurantTableConfigID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantManagementRoles">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantManagementRole">
+              <MappingFragment StoreEntitySet="RestaurantManagementRoles">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="RestaurantManagementRoleID" ColumnName="RestaurantManagementRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTasks">
+            <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTask">
+              <MappingFragment StoreEntitySet="RestaurantTasks">
+                <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+                <ScalarProperty Name="TaskSubject" ColumnName="TaskSubject" />
+                <ScalarProperty Name="TaskDate" ColumnName="TaskDate" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="RestaurantTaskID" ColumnName="RestaurantTaskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

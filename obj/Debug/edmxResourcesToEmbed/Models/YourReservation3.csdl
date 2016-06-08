@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YourReservationModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="RestaurantID" />
+    </Key>
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SlotsPerHour" Type="Int32" Nullable="false" />
+    <Property Name="DateRegistered" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RestaurantAbout">
+    <Key>
+      <PropertyRef Name="RestaurantAboutID" />
+    </Key>
+    <Property Name="RestaurantAboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="About" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantContact">
+    <Key>
+      <PropertyRef Name="RestaurantContactID" />
+    </Key>
+    <Property Name="RestaurantContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+    <Property Name="RestaurantOwnerID" Type="Int32" Nullable="false" />
+    <Property Name="RestaurantLocationID" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantLocation">
+    <Key>
+      <PropertyRef Name="RestaurantLocationID" />
+    </Key>
+    <Property Name="RestaurantLocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SuiteNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantOwner">
+    <Key>
+      <PropertyRef Name="RestaurantOwnerID" />
+    </Key>
+    <Property Name="RestaurantOwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApartmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RestaurantManagementRoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantReview">
+    <Key>
+      <PropertyRef Name="RestaurantReviewID" />
+    </Key>
+    <Property Name="RestaurantReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+    <Property Name="ReviewName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" />
+    <Property Name="ReviewDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RestaurantTableConfig">
+    <Key>
+      <PropertyRef Name="TableConfigID" />
+    </Key>
+    <Property Name="TableConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+    <Property Name="TableNumber" Type="Int32" />
+    <Property Name="NumberOfSeats" Type="Int32" />
+    <Property Name="TableTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RestaurantTableType">
+    <Key>
+      <PropertyRef Name="TableTypeID" />
+    </Key>
+    <Property Name="TableTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantTimeConfig">
+    <Key>
+      <PropertyRef Name="TimeConfigurationID" />
+    </Key>
+    <Property Name="TimeConfigurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OpeningTime" Type="Time" Precision="7" />
+    <Property Name="ClosingTime" Type="Time" Precision="7" />
+    <Property Name="ClosedHolidays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApartmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="YourReservationEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+    <EntitySet Name="RestaurantAbouts" EntityType="Self.RestaurantAbout" />
+    <EntitySet Name="RestaurantContacts" EntityType="Self.RestaurantContact" />
+    <EntitySet Name="RestaurantLocations" EntityType="Self.RestaurantLocation" />
+    <EntitySet Name="RestaurantOwners" EntityType="Self.RestaurantOwner" />
+    <EntitySet Name="RestaurantReviews" EntityType="Self.RestaurantReview" />
+    <EntitySet Name="RestaurantTableConfigs" EntityType="Self.RestaurantTableConfig" />
+    <EntitySet Name="RestaurantTableTypes" EntityType="Self.RestaurantTableType" />
+    <EntitySet Name="RestaurantTimeConfigs" EntityType="Self.RestaurantTimeConfig" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="RestaurantHolidays" EntityType="YourReservationModel2.RestaurantHoliday" />
+    <EntitySet Name="RestaurantReservationStatus" EntityType="YourReservationModel2.RestaurantReservationStatu" />
+    <EntitySet Name="RestaurantTableBookings" EntityType="YourReservationModel2.RestaurantTableBooking" />
+    <EntitySet Name="Reservations" EntityType="YourReservationModel2.Reservation" />
+    <EntitySet Name="RestaurantManagementRoles" EntityType="YourReservationModel2.RestaurantManagementRole" />
+    <EntitySet Name="RestaurantTasks" EntityType="YourReservationModel2.RestaurantTask" />
+  </EntityContainer>
+  <EntityType Name="RestaurantHoliday">
+    <Key>
+      <PropertyRef Name="RestaurantHolidayID" />
+    </Key>
+    <Property Name="RestaurantHolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="Holiday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantReservationStatu">
+    <Key>
+      <PropertyRef Name="ReservationStatusID" />
+    </Key>
+    <Property Name="ReservationStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="RestaurantTableBooking">
+    <Key>
+      <PropertyRef Name="TableBookingID" />
+    </Key>
+    <Property Name="TableBookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="TableConfigID" Type="Int32" />
+    <Property Name="ReservationID" Type="Int32" />
+    <Property Name="ReservationStatusID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="RestaurantTableConfigID" Type="Int32" />
+    <Property Name="ReservationDate" Type="DateTime" Precision="0" />
+    <Property Name="ReservationTime" Type="Time" Precision="7" />
+    <Property Name="PartyNumber" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialRequest" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantManagementRole">
+    <Key>
+      <PropertyRef Name="RestaurantManagementRoleID" />
+    </Key>
+    <Property Name="RestaurantManagementRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RestaurantTask">
+    <Key>
+      <PropertyRef Name="RestaurantTaskID" />
+    </Key>
+    <Property Name="RestaurantTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantID" Type="Int32" />
+    <Property Name="TaskDate" Type="DateTime" Precision="0" />
+    <Property Name="TaskSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaskDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
