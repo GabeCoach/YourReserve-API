@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using YourReservation.Models;
+using System.Web.Http.Cors;
 
 namespace YourReservation.Controllers
 {
+    [EnableCors(origins: "http://localhost:62012", headers: "*", methods: "*")]
     public class RestaurantAboutsController : ApiController
     {
         private YourReservationEntities1 db = new YourReservationEntities1();

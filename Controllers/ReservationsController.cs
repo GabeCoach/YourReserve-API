@@ -12,10 +12,12 @@ using YourReservation.Models;
 using Newtonsoft.Json;
 using ReportingPDF;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 
 
 namespace YourReservation.Controllers
 {
+    [EnableCors(origins: "http://localhost:62012", headers: "*", methods: "*")]
     public class ReservationsController : ApiController
     {
         private YourReservationEntities3 db = new YourReservationEntities3();
@@ -132,6 +134,18 @@ namespace YourReservation.Controllers
         {
             var query = from r in db.Reservations
                         where r.RestaurantID == ID
+                        select r;
+
+            return (IOrderedQueryable)query;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("api/Reservations/getByID/{ID}")]
+        public IOrderedQueryable getByID(int ID)
+        {
+            var query = from r in db.Reservations
+                        where r.ReservationID == ID
                         select r;
 
             return (IOrderedQueryable)query;

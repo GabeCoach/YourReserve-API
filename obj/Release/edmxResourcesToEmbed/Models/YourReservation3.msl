@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YourReservationModel2StoreContainer" CdmEntityContainer="YourReservationEntities3">
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="YourReservationModel2.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+          <ScalarProperty Name="SlotsPerHour" ColumnName="SlotsPerHour" />
+          <ScalarProperty Name="DateRegistered" ColumnName="DateRegistered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantAbouts">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantAbout">
+        <MappingFragment StoreEntitySet="RestaurantAbout">
+          <ScalarProperty Name="RestaurantAboutID" ColumnName="RestaurantAboutID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="About" ColumnName="About" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantContacts">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantContact">
+        <MappingFragment StoreEntitySet="RestaurantContact">
+          <ScalarProperty Name="RestaurantContactID" ColumnName="RestaurantContactID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="RestaurantOwnerID" ColumnName="RestaurantOwnerID" />
+          <ScalarProperty Name="RestaurantLocationID" ColumnName="RestaurantLocationID" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantLocations">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantLocation">
+        <MappingFragment StoreEntitySet="RestaurantLocation">
+          <ScalarProperty Name="RestaurantLocationID" ColumnName="RestaurantLocationID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="SuiteNumber" ColumnName="SuiteNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantOwners">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantOwner">
+        <MappingFragment StoreEntitySet="RestaurantOwners">
+          <ScalarProperty Name="RestaurantManagementRoleID" ColumnName="RestaurantManagementRoleID" />
+          <ScalarProperty Name="RestaurantOwnerID" ColumnName="RestaurantOwnerID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantReviews">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantReview">
+        <MappingFragment StoreEntitySet="RestaurantReviews">
+          <ScalarProperty Name="RestaurantReviewID" ColumnName="RestaurantReviewID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ReviewName" ColumnName="ReviewName" />
+          <ScalarProperty Name="ReviewContent" ColumnName="ReviewContent" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ReviewDateTime" ColumnName="ReviewDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTableConfigs">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableConfig">
+        <MappingFragment StoreEntitySet="RestaurantTableConfig">
+          <ScalarProperty Name="TableConfigID" ColumnName="TableConfigID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+          <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+          <ScalarProperty Name="TableTypeID" ColumnName="TableTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTableTypes">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableType">
+        <MappingFragment StoreEntitySet="RestaurantTableType">
+          <ScalarProperty Name="TableTypeID" ColumnName="TableTypeID" />
+          <ScalarProperty Name="TableType" ColumnName="TableType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTimeConfigs">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTimeConfig">
+        <MappingFragment StoreEntitySet="RestaurantTimeConfig">
+          <ScalarProperty Name="ClosedHolidays" ColumnName="ClosedHolidays" />
+          <ScalarProperty Name="TimeConfigurationID" ColumnName="TimeConfigurationID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+          <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="YourReservationModel2.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantHolidays">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantHoliday">
+        <MappingFragment StoreEntitySet="RestaurantHolidays">
+          <ScalarProperty Name="Holiday" ColumnName="Holiday" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="RestaurantHolidayID" ColumnName="RestaurantHolidayID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantReservationStatus">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantReservationStatu">
+        <MappingFragment StoreEntitySet="RestaurantReservationStatus">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReservationStatusID" ColumnName="ReservationStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTableBookings">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTableBooking">
+        <MappingFragment StoreEntitySet="RestaurantTableBooking">
+          <ScalarProperty Name="ReservationStatusID" ColumnName="ReservationStatusID" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="TableConfigID" ColumnName="TableConfigID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="TableBookingID" ColumnName="TableBookingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="YourReservationModel2.Reservation">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="SpecialRequest" ColumnName="SpecialRequest" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PartyNumber" ColumnName="PartyNumber" />
+          <ScalarProperty Name="ReservationTime" ColumnName="ReservationTime" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="RestaurantTableConfigID" ColumnName="RestaurantTableConfigID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantManagementRoles">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantManagementRole">
+        <MappingFragment StoreEntitySet="RestaurantManagementRoles">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="RestaurantManagementRoleID" ColumnName="RestaurantManagementRoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTasks">
+      <EntityTypeMapping TypeName="YourReservationModel2.RestaurantTask">
+        <MappingFragment StoreEntitySet="RestaurantTasks">
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="TaskSubject" ColumnName="TaskSubject" />
+          <ScalarProperty Name="TaskDate" ColumnName="TaskDate" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="RestaurantTaskID" ColumnName="RestaurantTaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

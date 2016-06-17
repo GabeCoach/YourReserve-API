@@ -16,6 +16,7 @@ using System.Web.Http.Description;
 using YourReservation.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Web.Http.Cors;
 
 using Newtonsoft.Json;
 using System.IdentityModel.Protocols.WSTrust;
@@ -34,6 +35,7 @@ namespace YourReservation.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("api/LoginController/LoginCustomer")]
+        [EnableCors(origins: "http://localhost:62012", headers: "*", methods: "*")]
         public HttpResponseMessage LoginCustomer()
         {
 
@@ -94,6 +96,7 @@ namespace YourReservation.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("api/LoginController/LoginRestaurant")]
+        [EnableCors(origins: "http://localhost:62012", headers: "*", methods: "*")]
         public HttpResponseMessage LoginRestaurant()
         {
 

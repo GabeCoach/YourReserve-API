@@ -6,6 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http.Cors;
+using Microsoft.Owin.Cors;
 
 namespace YourReservation
 {
@@ -20,6 +21,7 @@ namespace YourReservation
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             //Web API CORS
+            //config.EnableCors(new EnableCorsAttribute(Properties.Settings.Default.Cors, "", ""));
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 

@@ -71,3 +71,5 @@ C:\VSCode\YourReservation\YourReservation\bin\ReportingPDF.dll
 C:\VSCode\YourReservation\YourReservation\bin\ReportingPDF.pdb
 C:\VSCode\YourReservation\YourReservation\bin\Microsoft.Owin.Security.Jwt.dll
 C:\VSCode\YourReservation\YourReservation\bin\Microsoft.Owin.Security.Jwt.xml
+C:\VSCode\YourReservation\YourReservation\bin\Microsoft.Owin.Cors.dll
+C:\VSCode\YourReservation\YourReservation\bin\Microsoft.Owin.Cors.xml
