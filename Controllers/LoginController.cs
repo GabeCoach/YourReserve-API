@@ -14,7 +14,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 
 using YourReservation.Models;
-using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http.Cors;
 
@@ -179,23 +179,32 @@ namespace YourReservation.Controllers
 
         private string PerformLogin3(string UserName, string Password)
         {
-            var query =
-                (from a in db.RestaurantOwners
-                 where a.UserName == UserName && a.Password.Equals(Password)
-                 select new
-                 {
-                     a.UserName
-                 }
-            );
-
-            string sResult = "";
-
-            foreach (var x in query)
+            try
             {
-                sResult = x.UserName;
+                var query =
+               (from a in db.RestaurantOwners
+                where a.UserName == UserName && a.Password.Equals(Password)
+                select new
+                {
+                    a.UserName
+                }
+           );
+
+                string sResult = "";
+
+                foreach (var x in query)
+                {
+                    sResult = x.UserName;
+                }
+
+                return sResult;
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
             }
 
-            return sResult;
+           
         }
 
 

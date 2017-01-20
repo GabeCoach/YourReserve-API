@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -13,6 +15,8 @@ using Newtonsoft.Json;
 using ReportingPDF;
 using System.Threading.Tasks;
 using System.Web.Http.Cors;
+
+
 
 
 namespace YourReservation.Controllers
@@ -56,7 +60,7 @@ namespace YourReservation.Controllers
                 return BadRequest();
             }
 
-            db.Entry(reservation).State = EntityState.Modified;
+            db.Entry(reservation).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -125,6 +129,20 @@ namespace YourReservation.Controllers
         private bool ReservationExists(int id)
         {
             return db.Reservations.Count(e => e.ReservationID == id) > 0;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("api/Reservations/getReservationsByCurrentDate/{ID}")]
+        public IOrderedQueryable getReservationsByCurrentDate(int ID)
+        {
+            var reservations = db.Reservations
+                .Where(res => res.RestaurantID == ID && DbFunctions.TruncateTime(res.ReservationDate) == DateTime.Now.Date)
+                .Select(res => res);
+
+               
+
+            return (IOrderedQueryable)reservations;
         }
 
         [Authorize]

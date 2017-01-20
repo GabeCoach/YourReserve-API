@@ -55,7 +55,7 @@ namespace YourReservation.Controllers
                 return BadRequest();
             }
 
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
 
             try
             {

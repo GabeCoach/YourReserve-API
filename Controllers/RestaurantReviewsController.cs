@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -51,7 +51,7 @@ namespace YourReservation.Controllers
                 return BadRequest();
             }
 
-            db.Entry(restaurantReview).State = EntityState.Modified;
+            db.Entry(restaurantReview).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
